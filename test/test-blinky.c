@@ -13,9 +13,9 @@
 #define OTHER_PATTERN_SIZE 2
 
 uint16_t pattern[PATTERN_SIZE] = {
-    1000,   // HIGH
-    1000,   // LOW
-    1000    // HIGH
+    1000, // HIGH
+    1000, // LOW
+    1000  // HIGH
 };
 uint16_t otherPattern[OTHER_PATTERN_SIZE] = { 500, 2500 };
 
@@ -28,7 +28,6 @@ void setUp(void) {
 }
 
 void tearDown(void) {
-
 }
 
 void check_blink_initial_state(void) {
@@ -152,4 +151,3 @@ int main() {
 
     UNITY_END();
 }
-

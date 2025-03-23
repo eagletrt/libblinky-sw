@@ -49,5 +49,4 @@ typedef struct {
     bool repeat : 1;
 } Blinky;
 
-
 #endif // BLINKY_H
