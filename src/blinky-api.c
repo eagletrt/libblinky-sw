@@ -1,10 +1,10 @@
-/**
- * @file blinky.c
- * @brief Blink a digital led following a given pattern
- * without using timers or blocking code
+/*!
+ * \file blinky.c
+ * \date 2023-12-14
+ * \authors Antonio Gelain [antonio.gelain2@gmail.com]
  *
- * @date 14 Dec 2023
- * @author Antonio Gelain [antonio.gelain@studenti.unitn.it]
+ * \brief Blink a digital led following a given pattern
+ *      without using timers or blocking code.
  */
 
 #include "blinky.h"
@@ -62,15 +62,15 @@ BlinkyState blinky_routine(Blinky *b, uint32_t t) {
     if (!b->enable)
         return b->state;
 
-    // Check if state has to be changed
+    /*! Check if current status has to be changed */
     if (t - b->t >= b->pattern[b->index]) {
         b->state = !b->state;
         b->t = t;
         ++b->index;
 
-        // Wrap around if pattern ended
+        /*! Return to the start of the pattern if it ended */
         if (b->index >= b->size) {
-            // Disable if repeat is disabled
+            /*! Disable the blinker if repeat is not active */
             if (!b->repeat)
                 b->enable = false;
 

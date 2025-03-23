@@ -1,10 +1,11 @@
-/**
- * @file blinky.h
- * @brief Blink a digital led following a given pattern
- * without using timers or blocking code
+/*!
+ * \file blinky.h
+ * \date 2023-12-14
+ * \authors Antonio Gelain [antonio.gelain2@gmail.com]
+ *      Alessandro Bridi [ale.bridi15@gmail.com]
  *
- * @date 14 Dec 2023
- * @author Antonio Gelain [antonio.gelain@studenti.unitn.it]
+ * \brief Blink a digital led following a given pattern
+ *      without using timers or blocking code.
  */
 
 #ifndef BLINKY_H
@@ -14,29 +15,34 @@
 #include <stddef.h>
 #include <stdbool.h>
 
+/*!
+ * \brief Possible blinker states.
+ */
 typedef enum {
     BLINKY_LOW = 0,
     BLINKY_HIGH
 } BlinkyState;
 
-/**
+/*!
  * !!! GO, SLINKY GO !!!
  *
- * @attention Do not reorder elements, with this order
- * the size occupied by the struct is the smallest possible.
- * This is due to allignment of the struct bytes
+ * \attention Do not reorder elements, with this order the size occupied by the
+ *      struct is the smallest possible.
+ *      This is due to allignment of the struct bytes.
  * 
- * @detail The time unit of measurement is dictated by the time passed to the functions (usually milliseconds)
+ * \details The time unit of measurement is dictated by the time passed to the
+ *      functions (usually milliseconds).
  *
- * @param pattern An array of numbers representing the amount of time the led
- *        should remain in the current state.
- *        The state of the led starts as high and it toggles for every value of the array
- * @param t Last routine call timestamp
- * @param index The index of the current pattern value
- * @param size The number of elements in the pattern
- * @param state The current state of the led
- * @param enable Enable or disable blinking
- * @param repeat Run once or repeat
+ * \struct Blinky
+ * \var uint16_t *pattern An array of numbers representing the amount of time
+ *      before the led changes status.
+ * \var uint32_t t Last routine call timestamp.
+ * \var uint8_t index The index of the current pattern value.
+ * \var uint8_t size The number of elements in the pattern.
+ * \var BlinkyState initial_state The initial state of the led.
+ * \var BlinkyState state The current state of the led.
+ * \var enable Enable or disable blinking.
+ * \var repeat Run once or repeat.
  */
 typedef struct {
     uint16_t *pattern;

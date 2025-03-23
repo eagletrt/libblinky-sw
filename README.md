@@ -1,4 +1,4 @@
-# BLINKY
+# LIBBLINKY
 
 This *light* library can be used to blink a digital LED following a custom pattern
 without using a timer or blocking code.
@@ -28,7 +28,7 @@ where the `current_time` is the time that the blinker library uses to check the 
 and the `set_led_status` function has to be implemented by the user (or substituted with
 an equivalent function)
 
-> [!INFO]
+> [!NOTE]
 > The provided time defines the unit of measurement of the pattern (recomended is s or ms)
 
 ---
@@ -60,7 +60,7 @@ Here is a complete example using an **STM32 microcontroller** with the **HAL lib
 #include <stdbool.h>
 #include "blinky.h"
 
-#define BLINKY_PATTERN_SIZE 4
+#define BLINKY_PATTERN_SIZE (4U)
 
 Blinky blinker;
 uint16_t pattern[BLINKY_PATTERN_SIZE] = {
