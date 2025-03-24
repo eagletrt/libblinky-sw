@@ -38,6 +38,36 @@ void tearDown(void) {
 void check_blink_initial_state(void) {
     TEST_ASSERT_EQUAL_INT(BLINKY_HIGH, bOnce.initial_state);
 }
+void check_blink_init_null(void) {
+    Blinky *b = NULL;
+    blinky_init(b, NULL, 0, false, BLINKY_HIGH);
+    TEST_ASSERT_NULL(b);
+}
+void check_blink_enable_null(void) {
+    Blinky *b = NULL;
+    blinky_enable(b, false);
+    TEST_ASSERT_NULL(b);
+}
+void check_blink_repeat_null(void) {
+    Blinky *b = NULL;
+    blinky_repeat(b, true);
+    TEST_ASSERT_NULL(b);
+}
+void check_blink_set_pattern_null(void) {
+    Blinky *b = NULL;
+    blinky_set_pattern(b, NULL, 0);
+    TEST_ASSERT_NULL(b);
+}
+void check_blink_reset_null(void) {
+    Blinky *b = NULL;
+    blinky_reset(b, BLINKY_HIGH);
+    TEST_ASSERT_NULL(b);
+}
+void check_blink_routine_null(void) {
+    Blinky *b = NULL;
+    blinky_routine(b, 300);
+    TEST_ASSERT_NULL(b);
+}
 
 /*! @} */
 
@@ -171,6 +201,12 @@ int main() {
      */
 
     RUN_TEST(check_blink_initial_state);
+    RUN_TEST(check_blink_init_null);
+    RUN_TEST(check_blink_enable_null);
+    RUN_TEST(check_blink_repeat_null);
+    RUN_TEST(check_blink_set_pattern_null);
+    RUN_TEST(check_blink_reset_null);
+    RUN_TEST(check_blink_routine_null);
 
     /*! @} */
 
