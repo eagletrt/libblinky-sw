@@ -2,7 +2,7 @@
     "$schema": "https://raw.githubusercontent.com/platformio/platformio-core/develop/platformio/assets/schema/library.json",
     "name": "Blinky",
     "version": "0.1.0",
-    "description": "This library lets you define a pattern that a led will follow. It's not bloking and does not require specific hardware.",
+    "description": "This library lets you define a blinking pattern that a led will follow. It's not blocking and does not require any specific hardware.",
     "keywords": [
         "led-controller",
         "embedded"
