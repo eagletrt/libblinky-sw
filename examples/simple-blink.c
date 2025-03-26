@@ -15,13 +15,12 @@ int main() {
     blinky_init(&blinker, pattern, size, true, BLINKY_LOW);
     blinky_enable(&blinker, true);
 
-    uint32_t start_time = 0U;
     uint32_t elapsed_time = 0U;
 
     /*! Runs the blinking pattern for 5 seconds */
     while (elapsed_time < 5000U) {
         BlinkyState state = blinky_routine(&blinker, elapsed_time);
-        printf("Time: %d ms, LED State: %s\n", elapsed_time, state == BLINKY_HIGH ? "ON" : "OFF");
+        printf("Time: %lu ms, LED State: %s\n", elapsed_time, state == BLINKY_HIGH ? "ON" : "OFF");
 
         /*! Wait for 200 ms */
         usleep(200 * 1000);
