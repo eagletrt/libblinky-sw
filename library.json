@@ -1,31 +1,47 @@
 {
-  "$schema": "https://raw.githubusercontent.com/platformio/platformio-core/develop/platformio/assets/schema/library.json",
-  "name": "LibraryTemplate",
-  "version": "1.0.0",
-  "description": "Templates for libraries compatible with the PlatformIO ecosystem",
-  "keywords": [
-    "template"
-  ],
-  "repository": {
-    "type": "git",
-    "url": ""
-  },
-  "authors": [
-    {
-      "name": "Antonio Gelain",
-      "email": "antonio.gelain2@gmail.com",
-      "maintainer": true
+    "$schema": "https://raw.githubusercontent.com/platformio/platformio-core/develop/platformio/assets/schema/library.json",
+    "name": "Blinky",
+    "version": "0.1.0",
+    "description": "This library lets you define a blinking pattern that a led will follow. It's not blocking and does not require any specific hardware.",
+    "keywords": [
+        "led-controller",
+        "embedded"
+    ],
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/eagletrt/libblinky-sw"
+    },
+    "authors": [
+        {
+            "name": "Antonio Gelain",
+            "email": "antonio.gelain2@gmail.com",
+            "maintainer": true
+        },
+        {
+            "name": "Alessandro Bridi",
+            "email": "ale.bridi15@gmail.com"
+        }
+    ],
+    "license": "AGPL-3.0-only",
+    "frameworks": "*",
+    "platforms": "*",
+    "headers": [
+        "blinky.h",
+        "blinky-api.h"
+    ],
+    "examples": [
+        {
+            "name": "Simple 1s blink",
+            "base": "examples",
+            "files": [
+                "simple-blink.c"
+            ]
+        }
+    ],
+    "export": {
+        "include": [
+            "src/**",
+            "include/**"
+        ]
     }
-  ],
-  "license": "AGPL-3.0-only",
-  "frameworks": "*",
-  "platforms": "*",
-  "headers": [],
-  "examples": [],
-  "export": {
-    "include": [
-      "src/**",
-      "include/**"
-    ]
-  }
 }
