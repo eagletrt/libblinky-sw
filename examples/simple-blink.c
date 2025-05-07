@@ -1,9 +1,6 @@
 #include <stdio.h>
 #include <stdint.h>
 #include <stdbool.h>
-/*! Needed for usleep */
-#include <unistd.h>
-
 #include "blinky-api.h"
 
 int main() {
@@ -22,8 +19,6 @@ int main() {
         BlinkyState state = blinky_routine(&blinker, elapsed_time);
         printf("Time: %lu ms, LED State: %s\n", elapsed_time, state == BLINKY_HIGH ? "ON" : "OFF");
 
-        /*! Wait for 200 ms */
-        usleep(200 * 1000);
         elapsed_time += 200;
     }
 
