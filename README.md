@@ -11,8 +11,8 @@ without using a timer or blocking code.
 To use this library first declare a new `Blinky` handler and initialize it with the
 `blinky_init` function as follows:
 ```c
-Blinky blinker;
-blinky_init(&blinker, pattern, PATTERN_SIZE, true, BLINKY_LOW);
+struct Blinky blinker;
+blinky_api_init(&blinker, pattern, PATTERN_SIZE, true, BLINKY_LOW);
 ```
 
 The init function requires a pattern with its length, the option to repeat it or run it once
@@ -21,7 +21,7 @@ and the initial state of the led.
 To update the led status you need to call the `blinky_routine` function and set the actual
 led status accordingly as follows:
 ```c
-BlinkyState led_status = blinky_routine(&blinker, current_time);
+enum BlinkyState led_status = blinky_api_routine(&blinker, current_time);
 set_led_status(led_status);
 ```
 where the `current_time` is the time that the blinker library uses to check the led state
@@ -78,7 +78,8 @@ int main(void) {
         // Run blinker and update the led
         BlinkyState led_status = blinky_routine(&blinker, HAL_GetTick());
         HAL_GPIO_WritePin(LED_GPIO_Port, LED_Pin, led_status);
-        HAL_Delay(10); // Optional, not needed
+
+        // Do other stuff
     }
 }
 ```

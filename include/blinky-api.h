@@ -21,12 +21,12 @@
  * \param[in] repeat Wheter to repeat the patter or run only once.
  * \param[in] state The initial state of the led.
  */
-void blinky_init(
-    Blinky *b,
+void blinky_api_init(
+    struct Blinky *b,
     uint16_t *pattern,
     uint8_t size,
     bool repeat,
-    BlinkyState state);
+    enum BlinkyState state);
 
 /*!
  * \brief Enable or disable blinking.
@@ -34,7 +34,7 @@ void blinky_init(
  * \param[in] b The blinky handler.
  * \param[in] enabled True to enable blinky, false to disable.
  */
-void blinky_enable(Blinky *b, bool enabled);
+void blinky_api_enable(struct Blinky *b, bool enabled);
 
 /*!
  * \brief Enable or disable pattern repetition.
@@ -42,7 +42,7 @@ void blinky_enable(Blinky *b, bool enabled);
  * \param[in] b The blinky handler.
  * \param[in] repeat True to repeat, false to run once.
  */
-void blinky_repeat(Blinky *b, bool repeat);
+void blinky_api_repeat(struct Blinky *b, bool repeat);
 
 /*!
  * \brief Set a new patter to execute.
@@ -51,7 +51,7 @@ void blinky_repeat(Blinky *b, bool repeat);
  * \param[in] pattern The new pattern to set.
  * \param[in] size The length of the pattern.
  */
-void blinky_set_pattern(Blinky *b, uint16_t *pattern, uint8_t size);
+void blinky_api_set_pattern(struct Blinky *b, uint16_t *pattern, uint8_t size);
 
 /*!
  * \brief Re-enable and reset blinker.
@@ -60,7 +60,7 @@ void blinky_set_pattern(Blinky *b, uint16_t *pattern, uint8_t size);
  * \param[in] b The blinky handler.
  * \param[in] state The inital state of the led.
  */
-void blinky_reset(Blinky *b, BlinkyState state);
+void blinky_api_reset(struct Blinky *b, enum BlinkyState state);
 
 /*!
  * \brief Routine to check the state of the led.
@@ -69,6 +69,6 @@ void blinky_reset(Blinky *b, BlinkyState state);
  * \param[in] t The current time.
  * \return BlinkyState The current state of the led.
  */
-BlinkyState blinky_routine(Blinky *b, uint32_t t);
+enum BlinkyState blinky_api_routine(struct Blinky *b, uint32_t t);
 
 #endif // BLINKY_API_H
