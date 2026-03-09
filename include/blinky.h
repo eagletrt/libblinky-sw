@@ -18,13 +18,15 @@
 /*!
  * \brief Possible blinker states.
  */
-typedef enum {
-    BLINKY_LOW = 0,
-    BLINKY_HIGH
-} BlinkyState;
+enum BlinkyState {
+    BLINKY_LOW = 0, /*!< The led is off. */
+    BLINKY_HIGH     /*!< The led is on. */
+};
 
 /*!
  * !!! GO, SLINKY GO !!!
+ *
+ * \details The pattern is an array of numbers representing the amount of time, in the time unit of measurement, before the led changes status.
  *
  * \attention Do not reorder elements, with this order the size occupied by the
  *      struct is the smallest possible.
@@ -32,27 +34,16 @@ typedef enum {
  * 
  * \details The time unit of measurement is dictated by the time passed to the
  *      functions (usually milliseconds).
- *
- * \struct Blinky
- * \var uint16_t *pattern An array of numbers representing the amount of time
- *      before the led changes status.
- * \var uint32_t t Last routine call timestamp.
- * \var uint8_t index The index of the current pattern value.
- * \var uint8_t size The number of elements in the pattern.
- * \var BlinkyState initial_state The initial state of the led.
- * \var BlinkyState state The current state of the led.
- * \var enable Enable or disable blinking.
- * \var repeat Run once or repeat.
  */
-typedef struct {
-    uint16_t *pattern;
-    uint32_t t;
-    uint8_t index;
-    uint8_t size;
-    BlinkyState initial_state : 1;
-    BlinkyState state : 1;
-    bool enable : 1;
-    bool repeat : 1;
-} Blinky;
+struct Blinky {
+    uint16_t *pattern;                  /*!< Array of numbers representing the amount of time before the led changes status. */
+    uint32_t t;                         /*!< Last routine call timestamp. */
+    uint8_t index;                      /*!< The index of the current pattern value. */
+    uint8_t size;                       /*!< The number of elements in the pattern. */
+    enum BlinkyState initial_state : 1; /*!< The initial state of the led. */
+    enum BlinkyState state : 1;         /*!< The current state of the led. */
+    bool enable : 1;                    /*!< Enable or disable blinking. */
+    bool repeat : 1;                    /*!< Run once or repeat. */
+};
 
 #endif // BLINKY_H

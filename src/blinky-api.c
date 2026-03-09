@@ -7,14 +7,14 @@
  *      without using timers or blocking code.
  */
 
-#include "blinky.h"
+#include "blinky-api.h"
 
-void blinky_init(
-    Blinky *b,
+void blinky_api_init(
+    struct Blinky *b,
     uint16_t *pattern,
     uint8_t size,
     bool repeat,
-    BlinkyState state) {
+    enum BlinkyState state) {
     if (b == NULL)
         return;
     b->pattern = pattern;
@@ -27,26 +27,26 @@ void blinky_init(
     b->repeat = repeat;
 }
 
-void blinky_enable(Blinky *b, bool enabled) {
+void blinky_api_enable(struct Blinky *b, bool enabled) {
     if (b == NULL)
         return;
     b->enable = enabled;
 }
 
-void blinky_repeat(Blinky *b, bool repeat) {
+void blinky_api_repeat(struct Blinky *b, bool repeat) {
     if (b == NULL)
         return;
     b->repeat = repeat;
 }
 
-void blinky_set_pattern(Blinky *b, uint16_t *pattern, uint8_t size) {
+void blinky_api_set_pattern(struct Blinky *b, uint16_t *pattern, uint8_t size) {
     if (b == NULL)
         return;
     b->pattern = pattern;
     b->size = size;
 }
 
-void blinky_reset(Blinky *b, BlinkyState state) {
+void blinky_api_reset(struct Blinky *b, enum BlinkyState state) {
     if (b == NULL)
         return;
     b->t = 0;
@@ -56,7 +56,7 @@ void blinky_reset(Blinky *b, BlinkyState state) {
     b->enable = true;
 }
 
-BlinkyState blinky_routine(Blinky *b, uint32_t t) {
+enum BlinkyState blinky_api_routine(struct Blinky *b, uint32_t t) {
     if (b == NULL || b->pattern == NULL)
         return BLINKY_LOW;
     if (!b->enable)
